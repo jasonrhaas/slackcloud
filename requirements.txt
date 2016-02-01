@@ -2,3 +2,4 @@ flask
 flask-slack
 slacker
 wordcloud
+matplotlib

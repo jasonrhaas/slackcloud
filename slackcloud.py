@@ -52,7 +52,7 @@ def parse_slash_cmd(**kwargs):
     ch_id = kwargs.get('channel_id')
     ch_name = kwargs.get('channel_name')
     upload_wordcloud(ch_id, ch_name)
-    return slack.response('Generating wordcloud from the last 100 words...')
+    return slack.response('Enjoy your wordcloud!')
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8081)
