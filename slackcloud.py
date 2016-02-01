@@ -41,7 +41,6 @@ def upload_wordcloud(channel_id, channel_name):
         plt.axis("off")
         plt.savefig('/tmp/' + channel_name)
         slack.files.upload('/tmp/' + channel_name + '.png', channels=channel_id)
-        time.sleep(1.1)
     except TypeError as e:
         logging.error(e)
 
