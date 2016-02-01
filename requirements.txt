@@ -1,0 +1,5 @@
+matplotlib
+flask
+flask-slack
+slacker
+wordcloud
