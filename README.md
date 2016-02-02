@@ -1,6 +1,6 @@
 # slackcloud
 
-**slackcloud** generates word clouds using Slack chat history
+**slackcloud** generates word clouds using Slack chat history.
 
 This application runs on a server that is reachable by Slack.  It is triggered by a Slack "Slash Command".  After receiving the POST from Slack it then grabs the history from the Slack channel it was called from.  From that history (100 words), it generates a word cloud and uploads it to the same channel.
 
@@ -13,7 +13,7 @@ This application runs on a server that is reachable by Slack.  It is triggered b
 ## Quickstart
 
 
-- `git clone git@github.com/jasonrhaas/slackcloud` on your webserver.
+- On your webserver, `git clone git@github.com:jasonrhaas/slackcloud`.
 - Create a custom slash command under the Slack "Custom Integrations" tab.    This is the command you will use to kick off a word cloud.  Configure the command to point towards the webserver that you will be hosting **slackcloud** on.
 - Create a custom Bot under the Slack "Custom Integrations" tab.  This bot is the user that will upload the word cloud picture.
 - In your environment, add the following environment variables.  For Mac OSX, use **~/.bash_profile**.  For Ubuntu, use **~/.bash_aliases**.
@@ -41,4 +41,4 @@ export SLACK_CMD1_TOKEN='xxxx'
 
 ### Linux
 
-Installing **Pillow** on Linux can be a little bit tricky and depends on the distribution and OS packages.  See [Pillow install instructions](http://pillow.readthedocs.org/en/3.0.x/installation.html#linux-installation)
+Installing **Pillow** on Linux can be a little bit tricky and depends on the distribution and OS packages.  See [Pillow install instructions](http://pillow.readthedocs.org/en/3.0.x/installation.html#linux-installation).
