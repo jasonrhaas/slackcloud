@@ -25,6 +25,7 @@ slack_auth = os.environ.get('SLACK_AUTH')
 slack_teamid = os.environ.get('SLACK_TEAMID')
 slack_cmd1_name = os.environ.get('SLACK_CMD1_NAME')
 slack_cmd1_token = os.environ.get('SLACK_CMD1_TOKEN')
+port = int(os.environ.get("PORT", 8081))
 
 
 def upload_wordcloud(channel_id, channel_name):
@@ -54,4 +55,4 @@ def parse_slash_cmd(**kwargs):
     return slack.response('Enjoy your wordcloud!')
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8081)
+    app.run(host='127.0.0.1', port=port)
