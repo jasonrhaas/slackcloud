@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 
 import os
-import time
 import logging
+import threading
 
 import matplotlib.pyplot as plt
 from flask import Flask
@@ -51,7 +51,7 @@ def upload_wordcloud(channel_id, channel_name):
 def parse_slash_cmd(**kwargs):
     ch_id = kwargs.get('channel_id')
     ch_name = kwargs.get('channel_name')
-    upload_wordcloud(ch_id, ch_name)
+    threading.Thread(target=upload_wordcloud, args=(ch_id, ch_name)).start()
     return slack.response('Enjoy your wordcloud!')
 
 if __name__ == "__main__":
