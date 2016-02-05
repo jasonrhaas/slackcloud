@@ -55,7 +55,7 @@ def parse_slash_cmd(**kwargs):
     ch_id = kwargs.get('channel_id')
     ch_name = kwargs.get('channel_name')
     user_id = kwargs.get('user_id')
-    user_name = kwargs.get('user_id')
+    user_name = kwargs.get('user_name')
     wcloud = threading.Thread(target=upload_wordcloud,
                               args=(ch_id, ch_name),
                               kwargs={'user_name': user_name})
