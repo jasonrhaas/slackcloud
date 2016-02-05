@@ -28,7 +28,7 @@ slack_cmd1_token = os.environ.get('SLACK_CMD1_TOKEN')
 port = int(os.environ.get("PORT", 8081))
 
 
-def upload_wordcloud(channel_id, channel_name):
+def upload_wordcloud(channel_id, channel_name, **kwargs):
     slack = Slacker(slack_auth)
 
     # Grab last 100 messages in channel_id
@@ -41,7 +41,10 @@ def upload_wordcloud(channel_id, channel_name):
         plt.imshow(wordcloud)
         plt.axis("off")
         plt.savefig('/tmp/' + channel_name)
-        slack.files.upload('/tmp/' + channel_name + '.png', channels=channel_id)
+        initial_comment = 'Requested by {}'.format(kwargs.get('user_name'))
+        slack.files.upload('/tmp/' + channel_name + '.png',
+                           channels=channel_id,
+                           initial_comment=initial_comment)
     except TypeError as e:
         logging.error(e)
 
@@ -51,7 +54,12 @@ def upload_wordcloud(channel_id, channel_name):
 def parse_slash_cmd(**kwargs):
     ch_id = kwargs.get('channel_id')
     ch_name = kwargs.get('channel_name')
-    threading.Thread(target=upload_wordcloud, args=(ch_id, ch_name)).start()
+    user_id = kwargs.get('user_id')
+    user_name = kwargs.get('user_id')
+    wcloud = threading.Thread(target=upload_wordcloud,
+                              args=(ch_id, ch_name),
+                              kwargs={'user_name': user_name})
+    wcloud.start()
     return slack.response('Enjoy your wordcloud!')
 
 if __name__ == "__main__":
